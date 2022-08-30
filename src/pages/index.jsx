@@ -1,7 +1,16 @@
-export default function Homepage() {
+import PollList from "@/features/polls/list";
+import polls from "@/data/polls";
+
+export default function Homepage({ polls }) {
   return (
     <div className="mt-16 container mx-auto">
-      <h1>Hello world.</h1>
+      <PollList {...{ polls }} />
     </div>
   );
+}
+
+export function getServerSideProps() {
+  return {
+    props: { polls },
+  };
 }
